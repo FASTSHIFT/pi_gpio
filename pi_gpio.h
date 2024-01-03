@@ -29,12 +29,12 @@ extern "C" {
 
 #include <stdint.h>
 
-void pi_gpio_init();
+void pi_gpio_init(void);
 void pi_gpio_set_mode(uint8_t bcm_pin, int mode);
 void pi_gpio_set_value(uint8_t bcm_pin, int value);
 int pi_gpio_get_wpi_pin(uint8_t bcm_pin);
-volatile uint32_t* pi_gpio_get_register_set();
-volatile uint32_t* pi_gpio_get_register_clr();
+volatile uint32_t* pi_gpio_get_register_set(void);
+volatile uint32_t* pi_gpio_get_register_clr(void);
 
 #ifdef __cplusplus
 }

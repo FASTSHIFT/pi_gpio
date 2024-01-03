@@ -51,7 +51,7 @@ static volatile uint32_t* gpio = NULL;
 #define GPIO_REG_SET (gpio + 7) // sets   bits which are 1 ignores bits which are 0
 #define GPIO_REG_CLR (gpio + 10) // clears bits which are 1 ignores bits which are 0
 
-void pi_gpio_init()
+void pi_gpio_init(void)
 {
     /* open /dev/mem */
     int mem_fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -112,12 +112,12 @@ int pi_gpio_get_wpi_pin(uint8_t bcm_pin)
     return -1;
 }
 
-volatile uint32_t* pi_gpio_get_register_set()
+volatile uint32_t* pi_gpio_get_register_set(void)
 {
     return GPIO_REG_SET;
 }
 
-volatile uint32_t* pi_gpio_get_register_clr()
+volatile uint32_t* pi_gpio_get_register_clr(void)
 {
     return GPIO_REG_CLR;
 }
