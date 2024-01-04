@@ -87,7 +87,7 @@ void pi_gpio_init(void)
 
 void pi_gpio_set_mode(uint8_t bcm_pin, int mode)
 {
-    if (bcm_pin = > sizeof(gpio_wpi_map)) {
+    if (bcm_pin >= sizeof(gpio_wpi_map)) {
         return;
     }
 
@@ -96,7 +96,7 @@ void pi_gpio_set_mode(uint8_t bcm_pin, int mode)
 
 void pi_gpio_set_value(uint8_t bcm_pin, int value)
 {
-    if (bcm_pin = > sizeof(gpio_wpi_map)) {
+    if (bcm_pin >= sizeof(gpio_wpi_map)) {
         return;
     }
 
@@ -105,11 +105,11 @@ void pi_gpio_set_value(uint8_t bcm_pin, int value)
 
 int pi_gpio_get_wpi_pin(uint8_t bcm_pin)
 {
-    if (bcm_pin < sizeof(gpio_wpi_map)) {
-        return gpio_wpi_map[bcm_pin];
+    if (bcm_pin >= sizeof(gpio_wpi_map)) {
+        return -1;
     }
 
-    return -1;
+    return gpio_wpi_map[bcm_pin];
 }
 
 volatile uint32_t* pi_gpio_get_register_set(void)
